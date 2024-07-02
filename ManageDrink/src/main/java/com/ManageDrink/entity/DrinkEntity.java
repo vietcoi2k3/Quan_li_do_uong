@@ -5,12 +5,10 @@ import com.ManageDrink.until.constant.EntityConstant;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.*;
-import org.hibernate.annotations.processing.Pattern;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,20 +23,26 @@ public class DrinkEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "name drink cannot be empty")
+    @Size(max = 50, message = "name drink must be less than 50 characters")
     @Column(columnDefinition = CommonConstant.VARCHAR_50)
     private String nameDrink;
 
+    @Size(max = 1000, message = "description must be less than 1000 characters")
     @Column(columnDefinition = CommonConstant.LONG_TEXT)
     private String description;
 
+    @Min(value = 0, message = "price must be equal or greater than zero")
     @Column(columnDefinition = CommonConstant.INT)
     private int price;
 
+    @NotNull(message = "create date cannot be null")
+    @PastOrPresent(message = "create date must be a past or present date")
     @Column
     @JsonFormat(pattern = CommonConstant.DATE_FORMAT)
     private LocalDate createDate;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = EntityConstant.DRINK_ENTITY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = EntityConstant.DRINK_ENTITY,cascade = CascadeType.ALL)
     @JsonManagedReference(value = "drink-topping")
     private List<ToppingEntity> toppingEntities;
 
@@ -47,8 +51,10 @@ public class DrinkEntity {
     }
 
     private int roundPrice(int price) {
-        if (price<CommonConstant.ZERO)
+        if (price < CommonConstant.ZERO)
             return CommonConstant.ZERO;
         return (price / CommonConstant.ONE_THOUSAND) * CommonConstant.ONE_THOUSAND;
     }
+
+
 }

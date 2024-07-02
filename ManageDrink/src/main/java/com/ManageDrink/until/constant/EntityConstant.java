@@ -8,4 +8,7 @@ public class EntityConstant {
     public static final String DRINK_ENTITY ="drinkEntity";
 
     public static final String DRINK_ENTITY_ID = "drink_Entity_ID";
+
+    public static final String TOPPING_ENTITY_ID = "topping_Entity_ID";
+
 }
