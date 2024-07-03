@@ -11,5 +11,4 @@ public interface DrinkRepository extends JpaRepository<DrinkEntity,Long> {
 
     Optional<DrinkEntity> findByNameDrink(String name);
 
-
 }

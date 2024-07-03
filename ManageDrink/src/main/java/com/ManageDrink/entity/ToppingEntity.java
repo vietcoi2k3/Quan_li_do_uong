@@ -29,11 +29,11 @@ public class ToppingEntity {
     @PositiveOrZero(message = "Price must be a positive number or zero")
     private BigDecimal price;
 
-    @Column(name = EntityConstant.DRINK_ENTITY_ID)
-    private Long drinkEntityID;
+//    @Column(name = EntityConstant.DRINK_ENTITY_ID)
+//    private Long drinkEntityID;
 
-    @ManyToOne()
-    @JsonBackReference(value = "drink-topping")
-    @JoinColumn(name = EntityConstant.DRINK_ENTITY_ID, updatable = false, insertable = false)
-    private DrinkEntity drinkEntity;
+//    @ManyToOne
+//    @JsonBackReference(value = EntityConstant.DRINK_TOPPING_KEY)
+//    @JoinColumn(name = EntityConstant.DRINK_ENTITY_ID, updatable = false, insertable = false)
+//    private DrinkEntity drinkEntity;
 }

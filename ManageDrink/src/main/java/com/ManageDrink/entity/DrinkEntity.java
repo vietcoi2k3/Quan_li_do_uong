@@ -42,9 +42,12 @@ public class DrinkEntity {
     @JsonFormat(pattern = CommonConstant.DATE_FORMAT)
     private LocalDate createDate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = EntityConstant.DRINK_ENTITY,cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "drink-topping")
-    private List<ToppingEntity> toppingEntities;
+    @ManyToMany
+    @JoinTable(
+            name = "drink_topping",
+            joinColumns = @JoinColumn(name = "drink_id"),
+            inverseJoinColumns = @JoinColumn(name = "topping_id"))
+    private List<ToppingEntity> toppings;
 
     public void setPrice(int price) {
         this.price = roundPrice(price);

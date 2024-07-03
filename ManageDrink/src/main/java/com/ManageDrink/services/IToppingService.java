@@ -1,5 +1,6 @@
 package com.ManageDrink.services;
 
+import com.ManageDrink.dto.ToppingDTO;
 import com.ManageDrink.entity.ToppingEntity;
 
 import java.util.List;
@@ -11,6 +12,12 @@ public interface IToppingService {
 
     List<ToppingEntity> getToppingsByIds(List<Long> ids);
 
-    void saveTopping(ToppingEntity toppingEntity);
+    List<ToppingDTO> getListTopping(Long id);
+
+    ToppingDTO saveTopping(ToppingDTO toppingDTO);
+
+    ToppingDTO updateTopping(ToppingDTO toppingDTO);
+
+
 
 }
