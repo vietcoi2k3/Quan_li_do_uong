@@ -10,9 +10,7 @@ public interface IToppingService {
 
     boolean deleteTopping(Long idTopping);
 
-    List<ToppingEntity> getToppingsByIds(List<Long> ids);
-
-    List<ToppingDTO> getListTopping(Long id);
+    List<ToppingDTO> getListToppingByIdDrink(Long id);
 
     ToppingDTO saveTopping(ToppingDTO toppingDTO);
 

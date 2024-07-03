@@ -27,13 +27,15 @@ public class ToppingEntity {
 
     @NotNull(message = "Price cannot be null")
     @PositiveOrZero(message = "Price must be a positive number or zero")
-    private BigDecimal price;
+    private int price;
 
-//    @Column(name = EntityConstant.DRINK_ENTITY_ID)
-//    private Long drinkEntityID;
+    public void setPrice(int price) {
+        this.price = roundPrice(price);
+    }
 
-//    @ManyToOne
-//    @JsonBackReference(value = EntityConstant.DRINK_TOPPING_KEY)
-//    @JoinColumn(name = EntityConstant.DRINK_ENTITY_ID, updatable = false, insertable = false)
-//    private DrinkEntity drinkEntity;
+    private int roundPrice(int price) {
+        if (price < CommonConstant.ZERO)
+            return CommonConstant.ZERO;
+        return (price / CommonConstant.ONE_THOUSAND) * CommonConstant.ONE_THOUSAND;
+    }
 }

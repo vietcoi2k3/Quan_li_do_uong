@@ -48,16 +48,4 @@ public class DrinkEntity {
             joinColumns = @JoinColumn(name = "drink_id"),
             inverseJoinColumns = @JoinColumn(name = "topping_id"))
     private List<ToppingEntity> toppings;
-
-    public void setPrice(int price) {
-        this.price = roundPrice(price);
-    }
-
-    private int roundPrice(int price) {
-        if (price < CommonConstant.ZERO)
-            return CommonConstant.ZERO;
-        return (price / CommonConstant.ONE_THOUSAND) * CommonConstant.ONE_THOUSAND;
-    }
-
-
 }

@@ -1,41 +1,41 @@
-//package com.ManageDrink.controller;
-//
-//import com.ManageDrink.dto.ToppingDTO;
-//import com.ManageDrink.services.implement.ToppingService;
-//import jakarta.validation.Valid;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//
-//@RestController
-//@RequestMapping("/api/topping")
-//public class ToppingController {
-//
-//    @Autowired
-//    private ToppingService toppingService;
-//
-//    @PostMapping("/create")
-//    public ResponseEntity<?> addTopping(@RequestBody @Valid ToppingDTO toppingDTO){
-//        return new ResponseEntity<>(toppingService.saveTopping(toppingDTO),HttpStatus.CREATED);
-//    }
-//
-//    @PutMapping("/update")
-//    public ResponseEntity<?> updateTopping(@RequestBody @Valid ToppingDTO toppingDTO){
-//        return new ResponseEntity<>(toppingService.updateTopping(toppingDTO),HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/get-list-topping")
-//    public ResponseEntity<?> getListTopping(@RequestParam Long drinkID){
-//        return new ResponseEntity<>(toppingService.getListTopping(drinkID),HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping("/{id}/delete")
-//    public ResponseEntity<String> deleteDrink(@PathVariable("id") Long id) {
-//        if (toppingService.deleteTopping(id)) {
-//            return ResponseEntity.ok("Topping with id " + id + " deleted successfully");
-//        } else {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Topping not found with id: " + id);
-//        }
-//    }
-//}
+package com.ManageDrink.controller;
+
+import com.ManageDrink.dto.ToppingDTO;
+import com.ManageDrink.services.implement.ToppingService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/topping")
+public class ToppingController {
+
+    @Autowired
+    private ToppingService toppingService;
+
+    @PostMapping("/create")
+    public ResponseEntity<?> addTopping(@RequestBody @Valid ToppingDTO toppingDTO){
+        return new ResponseEntity<>(toppingService.saveTopping(toppingDTO),HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> updateTopping(@RequestBody @Valid ToppingDTO toppingDTO){
+        return new ResponseEntity<>(toppingService.updateTopping(toppingDTO),HttpStatus.OK);
+    }
+
+    @GetMapping("/get-list-topping")
+    public ResponseEntity<?> getListTopping(@RequestParam Long drinkID){
+        return new ResponseEntity<>(toppingService.getListToppingByIdDrink(drinkID),HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}/delete")
+    public ResponseEntity<String> deleteDrink(@PathVariable("id") Long id) {
+        if (toppingService.deleteTopping(id)) {
+            return ResponseEntity.ok("Topping with id " + id + " deleted successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Topping not found with id: " + id);
+        }
+    }
+}

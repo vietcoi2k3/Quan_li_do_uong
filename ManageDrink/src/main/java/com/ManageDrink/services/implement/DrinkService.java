@@ -9,9 +9,7 @@ import com.ManageDrink.services.IDrinkService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-
 
 @Service
 public class DrinkService implements IDrinkService {
@@ -52,7 +50,5 @@ public class DrinkService implements IDrinkService {
                 .build();
         return drinkEntity;
     }
-
-
 
 }

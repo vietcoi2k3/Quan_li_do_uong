@@ -25,8 +25,15 @@ public class ToppingDTO {
 
     @NotNull(message = "Price cannot be null")
     @PositiveOrZero(message = "Price must be a positive number or zero")
-    private BigDecimal price;
+    private int price;
 
-    @NotNull(message = "drinkEntityID cannot be null")
-    private Long drinkEntityID;
+    public void setPrice(int price) {
+        this.price = roundPrice(price);
+    }
+    private int roundPrice(int price) {
+        if (price < CommonConstant.ZERO)
+            return CommonConstant.ZERO;
+        return (price / CommonConstant.ONE_THOUSAND) * CommonConstant.ONE_THOUSAND;
+    }
+
 }
