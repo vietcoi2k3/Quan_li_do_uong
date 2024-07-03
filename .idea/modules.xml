@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ManageDrink/ManageDrink.iml" filepath="$PROJECT_DIR$/ManageDrink/ManageDrink.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Quan_li_do_uong.iml" filepath="$PROJECT_DIR$/.idea/Quan_li_do_uong.iml" />
     </modules>
   </component>

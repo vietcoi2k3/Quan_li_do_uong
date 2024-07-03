@@ -33,6 +33,9 @@ public class DrinkDTO {
 
     private List<Long> listIds;
 
+    private List<String> toppingNames;
+
+
     public void setPrice(int price) {
         this.price = roundPrice(price);
     }

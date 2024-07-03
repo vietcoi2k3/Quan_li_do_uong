@@ -24,8 +24,6 @@ public class DrinkController {
     @Autowired
     private DrinkService drinkService;
 
-//    @Autowired
-//    private ToppingService toppingService;
 
     @PostMapping("/create")
     public ResponseEntity<?> createDrink(@Valid @RequestBody DrinkDTO drinkDTO) {
@@ -33,9 +31,30 @@ public class DrinkController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> updateDrink(@RequestBody DrinkDTO drinkDTO){
+    public ResponseEntity<?> updateDrink(@RequestBody DrinkDTO drinkDTO) {
         return ResponseEntity.ok(drinkService.updateDrink(drinkDTO));
     }
+
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllDrinks(
+            @RequestParam(defaultValue = CommonConstant.DEFAULT_PAGE) int page,
+            @RequestParam(defaultValue = CommonConstant.DEFAULT_SIZE) int size) {
+
+
+        Pageable pageable = PageRequest.of(page, size);
+        Page<DrinkDTO> drinkDTOS = drinkService.getDrinks(pageable);
+
+
+        return new ResponseEntity<>(drinkDTOS.getContent(), HttpStatus.OK);
+    }
+
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteDrink(@PathVariable Long id) {
+        return ResponseEntity.ok(drinkService.deleteDrink(id));
+    }
+
 
 
 }
