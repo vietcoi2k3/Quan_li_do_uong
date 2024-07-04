@@ -7,10 +7,13 @@ public class EntityConstant {
 
     public static final String DRINK_ENTITY ="drinkEntity";
 
-    public static final String DRINK_ENTITY_ID = "drink_Entity_ID";
+    public static final String DRINK_ID = "drink_id";
 
-    public static final String TOPPING_ENTITY_ID = "topping_Entity_ID";
+    public static final String TOPPING_ID = "topping_id";
 
     public static final String DRINK_TOPPING_KEY = "drink-topping";
+
+    public static final String DRINK_TOPPING_TABLE = "drink_topping";
+
 
 }

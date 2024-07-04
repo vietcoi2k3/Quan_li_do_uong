@@ -1,14 +1,10 @@
 package com.ManageDrink.dto;
 
-import com.ManageDrink.until.constant.CommonConstant;
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
+import com.ManageDrink.until.constant.MessageConstant;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
-import java.math.BigDecimal;
+import static com.ManageDrink.until.PriceUtils.PriceUtils.roundPrice;
 
 @Getter
 @Setter
@@ -17,23 +13,20 @@ import java.math.BigDecimal;
 @Builder
 public class ToppingDTO {
 
-    @Positive(message = "id must be a positive number")
+    @Positive(message = MessageConstant.ID_MUST_BE_POSITIVE)
     private Long id;
 
-    @NotEmpty(message = "Topping name cannot be empty")
+    @NotEmpty(message = MessageConstant.NAME_NOT_EMPTY)
+    @Size(max = 50, message = MessageConstant.NAME_SIZE_50)
     private String name;
 
-    @NotNull(message = "Price cannot be null")
-    @PositiveOrZero(message = "Price must be a positive number or zero")
+    @NotNull(message = MessageConstant.PRICE_NOT_NULL)
+    @Min(value = 0, message = MessageConstant.PRICE_MIN)
     private int price;
 
     public void setPrice(int price) {
         this.price = roundPrice(price);
     }
-    private int roundPrice(int price) {
-        if (price < CommonConstant.ZERO)
-            return CommonConstant.ZERO;
-        return (price / CommonConstant.ONE_THOUSAND) * CommonConstant.ONE_THOUSAND;
-    }
+
 
 }

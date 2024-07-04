@@ -59,25 +59,37 @@ public class DrinkService implements IDrinkService {
     @Override
     @Transactional
     public ResponseEntity<?> updateDrink(DrinkDTO drinkDTO) {
-
         try {
-            DrinkEntity drinkEntity = drinkRepository.findById(drinkDTO.getId()).get();
+            // Kiểm tra xem ID của đồ uống có tồn tại không
+            Optional<DrinkEntity> optionalDrinkEntity = drinkRepository.findById(drinkDTO.getId());
+            if (!optionalDrinkEntity.isPresent()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(MessageConstant.DRINK_NOT_FOUND);
+            }
+
+            DrinkEntity drinkEntity = optionalDrinkEntity.get();
+
+            // Kiểm tra xem danh sách ID có bị null không
+            if (drinkDTO.getListIds() == null || drinkDTO.getListIds().isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(MessageConstant.INVALID_TOPPING_IDS);
+            }
+
             drinkEntity.setNameDrink(drinkDTO.getNameDrink());
-            drinkEntity.setId(drinkDTO.getId());
             drinkEntity.setDescription(drinkDTO.getDescription());
             drinkEntity.setToppings(toppingRepository.findAllById(drinkDTO.getListIds()));
             drinkRepository.save(drinkEntity);
+
             return ResponseEntity.ok(drinkEntity);
 
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(MessageConstant.ERROR_UPDATING_DRINK);
         }
-
-
     }
+
+
 
     @Override
     @Transactional
