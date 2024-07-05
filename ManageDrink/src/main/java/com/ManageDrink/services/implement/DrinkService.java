@@ -3,6 +3,7 @@ package com.ManageDrink.services.implement;
 import com.ManageDrink.dto.DrinkDTO;
 import com.ManageDrink.entity.DrinkEntity;
 import com.ManageDrink.entity.ToppingEntity;
+import com.ManageDrink.exception.NotNullException;
 import com.ManageDrink.repository.DrinkRepository;
 import com.ManageDrink.repository.ToppingRepository;
 import com.ManageDrink.services.IDrinkService;
@@ -10,16 +11,17 @@ import com.ManageDrink.until.constant.MessageConstant;
 import com.ManageDrink.until.mapper.DrinkMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import static com.ManageDrink.until.mapper.DrinkMapper.convertDTOTOEntity;
 
 @Service
 public class DrinkService implements IDrinkService {
@@ -32,22 +34,20 @@ public class DrinkService implements IDrinkService {
 
     @Override
     @Transactional
-    public ResponseEntity<?> createDrink(DrinkDTO drinkDTO) {
-        try {
+    public DrinkDTO createDrink(DrinkDTO drinkDTO) {
+            if (drinkDTO==null){
+                throw new NotNullException(MessageConstant.DRINK_NOT_NULL);
+            }
+            DrinkEntity drinkEntity = DrinkMapper.convertDTOToEntity(drinkDTO);
 
-            DrinkEntity drinkEntity = convertDTOTOEntity(drinkDTO);
+            drinkEntity.setCreateDate(LocalDate.now());//lấy thời điểm hiện tại làm ngày tạo
+
             List<ToppingEntity> toppingEntities = toppingRepository.findAllById(drinkDTO.getListIds());
             drinkEntity.setToppings(toppingEntities);
-            drinkRepository.save(drinkEntity);
-            return ResponseEntity.ok(drinkEntity);
+            drinkEntity = drinkRepository.save(drinkEntity);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(MessageConstant.ERROR_CREATING_DRINK);
+            return DrinkMapper.convertEntityTODTO(drinkEntity);
         }
-    }
 
     @Override
     public Page<DrinkDTO> getDrinks(Pageable pageable) {
@@ -58,25 +58,19 @@ public class DrinkService implements IDrinkService {
 
     @Override
     @Transactional
-    public ResponseEntity<?> updateDrink(DrinkDTO drinkDTO) {
-
-        try {
+    public DrinkDTO updateDrink(DrinkDTO drinkDTO) {
+            if (drinkDTO == null){
+                throw new NotNullException(MessageConstant.DRINK_NOT_NULL);
+            }
             DrinkEntity drinkEntity = drinkRepository.findById(drinkDTO.getId()).get();
+
             drinkEntity.setNameDrink(drinkDTO.getNameDrink());
             drinkEntity.setId(drinkDTO.getId());
             drinkEntity.setDescription(drinkDTO.getDescription());
             drinkEntity.setToppings(toppingRepository.findAllById(drinkDTO.getListIds()));
-            drinkRepository.save(drinkEntity);
-            return ResponseEntity.ok(drinkEntity);
+            drinkEntity = drinkRepository.save(drinkEntity);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(MessageConstant.ERROR_UPDATING_DRINK);
-        }
-
-
+            return DrinkMapper.convertEntityTODTO(drinkEntity);
     }
 
     @Override

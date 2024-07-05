@@ -13,4 +13,7 @@ public class MessageConstant {
 
     public static final String ERROR_DELETING_DRINK = "An error occurred while deleting the drink";
 
+    public static final String TOPPING_NOT_FOUND = "Topping not exit";
+
+    public static final String DRINK_NOT_NULL = "Dink not null";
 }

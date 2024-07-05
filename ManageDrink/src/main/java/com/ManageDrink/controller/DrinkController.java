@@ -14,9 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @RestController
 @RequestMapping("/api/drinks")
 public class DrinkController {
@@ -52,7 +49,7 @@ public class DrinkController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteDrink(@PathVariable Long id) {
-        return ResponseEntity.ok(drinkService.deleteDrink(id));
+        return this.drinkService.deleteDrink(id);
     }
 
 

@@ -6,7 +6,7 @@ public class CommonConstant {
 
     public static final int ZERO = 0;
 
-    public static final int ONE_THOUSAND =1000;
+    public static final int ONE_HUNDRED =100;
 
     public static final String VARCHAR_50 = "varchar(50)";
 

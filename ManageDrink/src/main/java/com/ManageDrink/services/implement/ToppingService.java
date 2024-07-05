@@ -3,9 +3,12 @@ package com.ManageDrink.services.implement;
 import com.ManageDrink.dto.ToppingDTO;
 import com.ManageDrink.entity.DrinkEntity;
 import com.ManageDrink.entity.ToppingEntity;
+import com.ManageDrink.exception.NotFoundException;
 import com.ManageDrink.repository.DrinkRepository;
 import com.ManageDrink.repository.ToppingRepository;
 import com.ManageDrink.services.IToppingService;
+import com.ManageDrink.until.constant.MessageConstant;
+import com.ManageDrink.until.mapper.ToppingMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,48 +42,33 @@ public class ToppingService implements IToppingService {
     }
 
     @Override
+    @Transactional
     public List<ToppingDTO> getListToppingByIdDrink(Long id) {
         if (!drinkRepository.existsById(id)){
-            throw new RuntimeException("DRINK NOT EXIT");
+            throw new NotFoundException(MessageConstant.DRINK_NOT_FOUND);
         }
-        DrinkEntity drinkEntity = drinkRepository.findById(id).get();
+
         List<ToppingDTO> result = new ArrayList<>();
-        for (ToppingEntity x:drinkEntity.getToppings()) {
-            result.add(this.convertEntityTODTO(x));
+        for (ToppingEntity x:toppingRepository.getToppingEntitiesByDrinkId(id)) {
+            result.add(ToppingMapper.convertEntityTODTO(x));
         }
         return result;
     }
 
     @Override
     public ToppingDTO saveTopping(ToppingDTO toppingDTO) {
-        ToppingEntity toppingEntity = toppingRepository.save(convertDTOToEntity(toppingDTO));
-        return this.convertEntityTODTO(toppingEntity);
+        ToppingEntity toppingEntity = toppingRepository.save(ToppingMapper.convertDTOToEntity(toppingDTO));
+        return ToppingMapper.convertEntityTODTO(toppingEntity);
     }
 
     @Override
     public ToppingDTO updateTopping(ToppingDTO toppingDTO) {
         if (!toppingRepository.existsById(toppingDTO.getId())){
-            throw new RuntimeException("TOPPING NOT EXIT");
+            throw new NotFoundException(MessageConstant.TOPPING_NOT_FOUND);
         }
-        ToppingEntity toppingEntity=  toppingRepository.save(convertDTOToEntity(toppingDTO));
+        toppingRepository.save(ToppingMapper.convertDTOToEntity(toppingDTO));
         return toppingDTO;
     }
 
-    private ToppingEntity convertDTOToEntity(ToppingDTO toppingDTO){
-        ToppingEntity toppingEntity = ToppingEntity.builder()
-                .id(toppingDTO.getId())
-                .name(toppingDTO.getName())
-                .price(toppingDTO.getPrice())
-                .build();
-        return toppingEntity;
-    }
 
-    private ToppingDTO convertEntityTODTO(ToppingEntity toppingEntity){
-        ToppingDTO toppingDTO = ToppingDTO.builder()
-                .id(toppingEntity.getId())
-                .price(toppingEntity.getPrice())
-                .name(toppingEntity.getName())
-                .build();
-        return toppingDTO;
-    }
 }

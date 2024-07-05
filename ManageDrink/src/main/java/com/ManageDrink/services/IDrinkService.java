@@ -8,11 +8,11 @@ import org.springframework.http.ResponseEntity;
 
 public interface IDrinkService {
 
-    ResponseEntity<?> createDrink(DrinkDTO drinkDTO);
+    DrinkDTO createDrink(DrinkDTO drinkDTO);
 
     Page<DrinkDTO> getDrinks(Pageable pageable);
 
-    ResponseEntity<?> updateDrink(DrinkDTO drinkDTO);
+    DrinkDTO updateDrink(DrinkDTO drinkDTO);
 
     ResponseEntity<?> deleteDrink(Long id);
 

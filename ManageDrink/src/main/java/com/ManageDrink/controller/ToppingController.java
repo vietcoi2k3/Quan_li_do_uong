@@ -1,6 +1,7 @@
 package com.ManageDrink.controller;
 
 import com.ManageDrink.dto.ToppingDTO;
+import com.ManageDrink.exception.NotFoundException;
 import com.ManageDrink.services.implement.ToppingService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,12 @@ public class ToppingController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> updateTopping(@RequestBody @Valid ToppingDTO toppingDTO){
+    public ResponseEntity<?> updateTopping(@RequestBody @Valid ToppingDTO toppingDTO)  {
         return new ResponseEntity<>(toppingService.updateTopping(toppingDTO),HttpStatus.OK);
     }
 
     @GetMapping("/get-list-topping")
-    public ResponseEntity<?> getListTopping(@RequestParam Long drinkID){
+    public ResponseEntity<?> getListTopping(@RequestParam Long drinkID)  {
         return new ResponseEntity<>(toppingService.getListToppingByIdDrink(drinkID),HttpStatus.OK);
     }
 

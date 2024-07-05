@@ -2,6 +2,7 @@ package com.ManageDrink.entity;
 
 import com.ManageDrink.until.constant.CommonConstant;
 import com.ManageDrink.until.constant.EntityConstant;
+import com.ManageDrink.until.constant.ValidateConstant;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -23,21 +24,20 @@ public class DrinkEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "name drink cannot be empty")
-    @Size(max = 50, message = "name drink must be less than 50 characters")
+    @NotEmpty(message = ValidateConstant.NAME_DRINK_NOT_EMPTY)
+    @NotNull(message =ValidateConstant.NAME_DRINK_NOT_NULL)
+    @Size(max = 50, message = ValidateConstant.NAME_DRINK_MAX_SIZE)
     @Column(columnDefinition = CommonConstant.VARCHAR_50)
     private String nameDrink;
 
-    @Size(max = 1000, message = "description must be less than 1000 characters")
+    @Size(max = 1000, message = ValidateConstant.DESCRIPTION_DRINK_MAX_SIZE)
     @Column(columnDefinition = CommonConstant.LONG_TEXT)
     private String description;
 
-    @Min(value = 0, message = "price must be equal or greater than zero")
+    @Min(value = 0, message = ValidateConstant.PRICE_DRINK_MUST_GREATER_ZERO)
     @Column(columnDefinition = CommonConstant.INT)
     private int price;
 
-    @NotNull(message = "create date cannot be null")
-    @PastOrPresent(message = "create date must be a past or present date")
     @Column
     @JsonFormat(pattern = CommonConstant.DATE_FORMAT)
     private LocalDate createDate;
@@ -45,7 +45,7 @@ public class DrinkEntity {
     @ManyToMany
     @JoinTable(
             name = "drink_topping",
-            joinColumns = @JoinColumn(name = "drink_id"),
-            inverseJoinColumns = @JoinColumn(name = "topping_id"))
+            joinColumns = @JoinColumn(name = EntityConstant.DRINK_ENTITY_ID),
+            inverseJoinColumns = @JoinColumn(name = EntityConstant.TOPPING_ID))
     private List<ToppingEntity> toppings;
 }

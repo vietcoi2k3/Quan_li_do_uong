@@ -2,6 +2,7 @@ package com.ManageDrink.entity;
 
 import com.ManageDrink.until.constant.CommonConstant;
 import com.ManageDrink.until.constant.EntityConstant;
+import com.ManageDrink.until.constant.ValidateConstant;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -21,12 +22,12 @@ public class ToppingEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "Topping name cannot be empty")
+    @NotEmpty(message = ValidateConstant.NAME_TOPPING_NOT_EMPTY)
+    @NotNull(message = ValidateConstant.NAME_TOPPING_NOT_NULL)
     @Column(columnDefinition = CommonConstant.VARCHAR_50)
     private String name;
 
-    @NotNull(message = "Price cannot be null")
-    @PositiveOrZero(message = "Price must be a positive number or zero")
+    @PositiveOrZero(message = ValidateConstant.PRICE_TOPPING_MUST_GREATER_ZERO)
     private int price;
 
     public void setPrice(int price) {
@@ -36,6 +37,6 @@ public class ToppingEntity {
     private int roundPrice(int price) {
         if (price < CommonConstant.ZERO)
             return CommonConstant.ZERO;
-        return (price / CommonConstant.ONE_THOUSAND) * CommonConstant.ONE_THOUSAND;
+        return (price / CommonConstant.ONE_HUNDRED) * CommonConstant.ONE_HUNDRED;
     }
 }
