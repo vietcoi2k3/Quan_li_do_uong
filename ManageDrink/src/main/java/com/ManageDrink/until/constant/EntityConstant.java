@@ -10,4 +10,7 @@ public class EntityConstant {
     public static final String TOPPING_ID = "topping_id";
 
 
+    public static final String DRINK_TOPPING_TABLE = "drink_topping";
+
+
 }

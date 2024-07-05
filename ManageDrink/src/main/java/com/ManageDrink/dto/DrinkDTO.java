@@ -1,13 +1,14 @@
 package com.ManageDrink.dto;
 
+import com.ManageDrink.until.PriceUtils.PriceUtils;
 import com.ManageDrink.until.constant.CommonConstant;
 import com.ManageDrink.until.constant.ValidateConstant;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -15,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class DrinkDTO {
+
     private Long id;
 
     @NotEmpty(message = ValidateConstant.NAME_DRINK_NOT_EMPTY)
@@ -31,12 +33,6 @@ public class DrinkDTO {
     private List<Long> listIds;
 
     public void setPrice(int price) {
-        this.price = roundPrice(price);
-    }
-
-    private int roundPrice(int price) {
-        if (price < CommonConstant.ZERO)
-            return CommonConstant.ZERO;
-        return (price / CommonConstant.ONE_HUNDRED) * CommonConstant.ONE_HUNDRED;
+        this.price = PriceUtils.roundPrice(price);
     }
 }

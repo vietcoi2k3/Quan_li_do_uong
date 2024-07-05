@@ -1,5 +1,6 @@
 package com.ManageDrink.dto;
 
+import com.ManageDrink.until.PriceUtils.PriceUtils;
 import com.ManageDrink.until.constant.CommonConstant;
 import com.ManageDrink.until.constant.ValidateConstant;
 import jakarta.validation.constraints.NotEmpty;
@@ -24,12 +25,8 @@ public class ToppingDTO {
     private int price;
 
     public void setPrice(int price) {
-        this.price = roundPrice(price);
+        this.price = PriceUtils.roundPrice(price);
     }
-    private int roundPrice(int price) {
-        if (price < CommonConstant.ZERO)
-            return CommonConstant.ZERO;
-        return (price / CommonConstant.ONE_HUNDRED) * CommonConstant.ONE_HUNDRED;
-    }
+
 
 }

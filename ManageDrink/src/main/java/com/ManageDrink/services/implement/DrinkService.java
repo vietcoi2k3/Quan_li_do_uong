@@ -65,13 +65,14 @@ public class DrinkService implements IDrinkService {
             DrinkEntity drinkEntity = drinkRepository.findById(drinkDTO.getId()).get();
 
             drinkEntity.setNameDrink(drinkDTO.getNameDrink());
-            drinkEntity.setId(drinkDTO.getId());
             drinkEntity.setDescription(drinkDTO.getDescription());
             drinkEntity.setToppings(toppingRepository.findAllById(drinkDTO.getListIds()));
             drinkEntity = drinkRepository.save(drinkEntity);
 
             return DrinkMapper.convertEntityTODTO(drinkEntity);
     }
+
+
 
     @Override
     @Transactional

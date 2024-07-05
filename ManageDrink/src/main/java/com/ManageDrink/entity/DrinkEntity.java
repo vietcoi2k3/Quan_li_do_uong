@@ -4,13 +4,14 @@ import com.ManageDrink.until.constant.CommonConstant;
 import com.ManageDrink.until.constant.EntityConstant;
 import com.ManageDrink.until.constant.ValidateConstant;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import static com.ManageDrink.until.PriceUtils.PriceUtils.roundPrice;
 
 @Entity
 @Table(name = EntityConstant.DRINK_NAME_TABLE)
@@ -42,10 +43,17 @@ public class DrinkEntity {
     @JsonFormat(pattern = CommonConstant.DATE_FORMAT)
     private LocalDate createDate;
 
+    public void setPrice(int price) {
+        this.price = roundPrice(price);
+    }
+
+
     @ManyToMany
     @JoinTable(
             name = "drink_topping",
             joinColumns = @JoinColumn(name = EntityConstant.DRINK_ENTITY_ID),
             inverseJoinColumns = @JoinColumn(name = EntityConstant.TOPPING_ID))
     private List<ToppingEntity> toppings;
+
+
 }
