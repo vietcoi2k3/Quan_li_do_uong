@@ -1,7 +1,6 @@
 package com.ManageDrink.services.implement;
 
 import com.ManageDrink.dto.ToppingDTO;
-import com.ManageDrink.entity.DrinkEntity;
 import com.ManageDrink.entity.ToppingEntity;
 import com.ManageDrink.exception.NotFoundException;
 import com.ManageDrink.repository.DrinkRepository;
@@ -13,9 +12,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ToppingService implements IToppingService {
@@ -48,11 +47,10 @@ public class ToppingService implements IToppingService {
             throw new NotFoundException(MessageConstant.DRINK_NOT_FOUND);
         }
 
-        List<ToppingDTO> result = new ArrayList<>();
-        for (ToppingEntity x:toppingRepository.getToppingEntitiesByDrinkId(id)) {
-            result.add(ToppingMapper.convertEntityTODTO(x));
-        }
-        return result;
+        List<ToppingEntity> result = toppingRepository.getToppingEntitiesByDrinkId(id);
+        return result.stream()
+                .map(ToppingMapper::convertEntityTODTO)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -68,6 +66,14 @@ public class ToppingService implements IToppingService {
         }
         toppingRepository.save(ToppingMapper.convertDTOToEntity(toppingDTO));
         return toppingDTO;
+    }
+
+    @Override
+    public List<ToppingDTO> getAllTopping() {
+        List<ToppingEntity> toppingEntities = toppingRepository.findAll();
+        return toppingEntities.stream()
+                .map(ToppingMapper::convertEntityTODTO)
+                .collect(Collectors.toList());
     }
 
 

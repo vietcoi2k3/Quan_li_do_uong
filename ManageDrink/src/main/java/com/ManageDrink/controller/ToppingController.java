@@ -31,6 +31,11 @@ public class ToppingController {
         return new ResponseEntity<>(toppingService.getListToppingByIdDrink(drinkID),HttpStatus.OK);
     }
 
+    @GetMapping("/get-all-topping")
+    public ResponseEntity<?> getAllTopping(){
+        return new ResponseEntity<>(toppingService.getAllTopping(),HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}/delete")
     public ResponseEntity<String> deleteDrink(@PathVariable("id") Long id) {
         if (toppingService.deleteTopping(id)) {

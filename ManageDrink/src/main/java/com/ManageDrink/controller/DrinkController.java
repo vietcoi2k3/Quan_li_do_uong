@@ -1,8 +1,6 @@
 package com.ManageDrink.controller;
 
 import com.ManageDrink.dto.DrinkDTO;
-import com.ManageDrink.entity.DrinkEntity;
-import com.ManageDrink.entity.ToppingEntity;
 import com.ManageDrink.services.implement.DrinkService;
 import com.ManageDrink.until.constant.CommonConstant;
 import jakarta.validation.Valid;

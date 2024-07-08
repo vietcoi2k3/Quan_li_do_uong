@@ -11,7 +11,6 @@ import com.ManageDrink.until.constant.MessageConstant;
 import com.ManageDrink.until.mapper.DrinkMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -46,7 +45,9 @@ public class DrinkService implements IDrinkService {
             drinkEntity.setToppings(toppingEntities);
             drinkEntity = drinkRepository.save(drinkEntity);
 
-            return DrinkMapper.convertEntityTODTO(drinkEntity);
+            DrinkDTO result = DrinkMapper.convertEntityTODTO(drinkEntity);
+            result.setListIds(drinkDTO.getListIds());
+            return result;
         }
 
     @Override
@@ -66,10 +67,11 @@ public class DrinkService implements IDrinkService {
 
             drinkEntity.setNameDrink(drinkDTO.getNameDrink());
             drinkEntity.setDescription(drinkDTO.getDescription());
-            drinkEntity.setToppings(toppingRepository.findAllById(drinkDTO.getListIds()));
-            drinkEntity = drinkRepository.save(drinkEntity);
 
-            return DrinkMapper.convertEntityTODTO(drinkEntity);
+            drinkEntity.setToppings(toppingRepository.findAllById(drinkDTO.getListIds()));
+            drinkRepository.save(drinkEntity);
+
+            return drinkDTO;
     }
 
 

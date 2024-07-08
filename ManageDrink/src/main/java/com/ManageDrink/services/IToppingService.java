@@ -17,6 +17,6 @@ public interface IToppingService {
 
     ToppingDTO updateTopping(ToppingDTO toppingDTO) throws NotFoundException;
 
-
+    List<ToppingDTO> getAllTopping();
 
 }
