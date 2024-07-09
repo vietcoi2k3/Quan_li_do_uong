@@ -33,7 +33,7 @@ public class DrinkEntity {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore // tránh trường hợp set id
+    @Setter(AccessLevel.NONE) // tránh trường hợp set id
     private Long id;
 
     /**

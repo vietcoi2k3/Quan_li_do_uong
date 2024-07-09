@@ -1,12 +1,13 @@
 package com.managedrink.controller;
 
-
 import com.managedrink.dto.DrinkDTO;
 import com.managedrink.services.implement.DrinkService;
+import com.managedrink.until.constants.ApiResponseMessages;
 import com.managedrink.until.constants.CommonConstant;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -32,10 +33,18 @@ public class DrinkController {
      * @return ResponseEntity chứa thông tin về đối tượng đồ uống đã được tạo và HttpStatus.CREATED nếu thành công.
      */
     @Operation(summary = "Create a new drink", description = "API tạo mới một đối tượng đồ uống")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = ApiResponseMessages.CREATED,
+                    description = ApiResponseMessages.CREATED_DESC),
+            @ApiResponse(responseCode = ApiResponseMessages.BAD_REQUEST,
+                    description = ApiResponseMessages.BAD_REQUEST_DESC),
+            @ApiResponse(responseCode = ApiResponseMessages.INTERNAL_SERVER_ERROR,
+                    description = ApiResponseMessages.INTERNAL_SERVER_ERROR_DESC)
+    })
     @PostMapping("/create")
     public ResponseEntity<?> createDrink(
             @Parameter(description = "DTO của đồ uống để tạo mới", required = true)
-            @Valid @RequestBody DrinkDTO drinkDTO) {
+            @RequestBody DrinkDTO drinkDTO) {
         return new ResponseEntity<>(drinkService.createDrink(drinkDTO), HttpStatus.CREATED);
     }
 
@@ -46,6 +55,16 @@ public class DrinkController {
      * @return ResponseEntity chứa thông tin về đối tượng đồ uống đã được cập nhật và HttpStatus.OK nếu thành công.
      */
     @Operation(summary = "Update an existing drink", description = "API cập nhật thông tin của một đồ uống")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = ApiResponseMessages.OK,
+                    description = ApiResponseMessages.OK_DESC),
+            @ApiResponse(responseCode = ApiResponseMessages.BAD_REQUEST,
+                    description = ApiResponseMessages.BAD_REQUEST_DESC),
+            @ApiResponse(responseCode = ApiResponseMessages.NOT_FOUND,
+                    description = ApiResponseMessages.NOT_FOUND_DESC),
+            @ApiResponse(responseCode = ApiResponseMessages.INTERNAL_SERVER_ERROR,
+                    description = ApiResponseMessages.INTERNAL_SERVER_ERROR_DESC)
+    })
     @PutMapping("/update")
     public ResponseEntity<?> updateDrink(
             @Parameter(description = "DTO của đồ uống để cập nhật thông tin", required = true)
@@ -61,6 +80,14 @@ public class DrinkController {
      * @return ResponseEntity chứa danh sách các đồ uống trên trang hiện tại và HttpStatus.OK nếu thành công.
      */
     @Operation(summary = "Get all drinks with pagination", description = "API lấy danh sách các đồ uống với phân trang")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = ApiResponseMessages.OK,
+                    description = ApiResponseMessages.OK_DESC),
+            @ApiResponse(responseCode = ApiResponseMessages.BAD_REQUEST,
+                    description = ApiResponseMessages.BAD_REQUEST_DESC),
+            @ApiResponse(responseCode = ApiResponseMessages.INTERNAL_SERVER_ERROR,
+                    description = ApiResponseMessages.INTERNAL_SERVER_ERROR_DESC)
+    })
     @GetMapping("/all")
     public ResponseEntity<?> getAllDrinks(
             @Parameter(description = "Trang hiện tại", example = "0", required = false)
@@ -81,10 +108,19 @@ public class DrinkController {
      * @return ResponseEntity chứa thông tin về việc xóa đồ uống và HttpStatus tương ứng.
      */
     @Operation(summary = "Delete a drink by ID", description = "API xóa một đồ uống dựa trên ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = ApiResponseMessages.OK,
+                    description = ApiResponseMessages.OK_DESC),
+            @ApiResponse(responseCode = ApiResponseMessages.NOT_FOUND,
+                    description = ApiResponseMessages.NOT_FOUND_DESC),
+            @ApiResponse(responseCode = ApiResponseMessages.INTERNAL_SERVER_ERROR,
+                    description = ApiResponseMessages.INTERNAL_SERVER_ERROR_DESC)
+    })
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteDrink(
             @Parameter(description = "ID của đồ uống cần xóa", required = true)
             @PathVariable Long id) {
         return this.drinkService.deleteDrink(id);
     }
+
 }

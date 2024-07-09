@@ -30,7 +30,7 @@ public class ToppingEntity {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore // tránh trường hợp set id
+    @Setter(AccessLevel.NONE)
     private Long id;
 
     /**
