@@ -1,0 +1,525 @@
+2024-07-10T00:02:14.699+07:00  INFO 9248 --- [main] com.managedrink.ManageDrinkApplication   : Starting ManageDrinkApplication using Java 17.0.10 with PID 9248 (C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong\ManageDrink\target\classes started by Admin in C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong)
+2024-07-10T00:02:14.708+07:00  INFO 9248 --- [main] com.managedrink.ManageDrinkApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-10T00:02:15.428+07:00  INFO 9248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-10T00:02:15.478+07:00  INFO 9248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 2 JPA repository interfaces.
+2024-07-10T00:02:15.858+07:00  INFO 9248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-10T00:02:15.869+07:00  INFO 9248 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-10T00:02:15.869+07:00  INFO 9248 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-10T00:02:15.909+07:00  INFO 9248 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-10T00:02:15.909+07:00  INFO 9248 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1147 ms
+2024-07-10T00:02:16.008+07:00  INFO 9248 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-10T00:02:16.041+07:00  INFO 9248 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-10T00:02:16.068+07:00  INFO 9248 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-10T00:02:16.220+07:00  INFO 9248 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-10T00:02:16.239+07:00  INFO 9248 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-10T00:02:16.431+07:00  INFO 9248 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@29892a77
+2024-07-10T00:02:16.438+07:00  INFO 9248 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-10T00:02:17.090+07:00  INFO 9248 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-10T00:02:17.158+07:00  INFO 9248 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-10T00:02:17.519+07:00  WARN 9248 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-10T00:02:18.211+07:00  INFO 9248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-10T00:02:18.219+07:00  INFO 9248 --- [main] com.managedrink.ManageDrinkApplication   : Started ManageDrinkApplication in 3.951 seconds (process running for 4.597)
+2024-07-10T00:02:21.769+07:00  INFO 9248 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-10T00:02:21.769+07:00  INFO 9248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-10T00:02:21.769+07:00  INFO 9248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-07-10T00:02:21.888+07:00  WARN 9248 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler com.managedrink.exception.GlobalExceptionHandler#handleValidationExceptions(MethodArgumentNotValidException, WebRequest)
+
+java.lang.IllegalArgumentException: Request must not be null
+	at org.springframework.util.Assert.notNull(Assert.java:172) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.web.util.WebUtils.getSessionAttribute(WebUtils.java:374) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.i18n.SessionLocaleResolver.resolveLocale(SessionLocaleResolver.java:151) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at com.managedrink.exception.GlobalExceptionHandler.handleValidationExceptions(GlobalExceptionHandler.java:64) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-07-10T00:02:21.893+07:00  WARN 9248 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.managedrink.controller.DrinkController.createDrink(com.managedrink.dto.DrinkDTO): [Field error in object 'drinkDTO' on field 'nameDrink': rejected value []; codes [NotEmpty.drinkDTO.nameDrink,NotEmpty.nameDrink,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [drinkDTO.nameDrink,nameDrink]; arguments []; default message [nameDrink]]; default message [name.drink.not.empty]] ]
+2024-07-10T00:02:42.900+07:00  WARN 9248 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler com.managedrink.exception.GlobalExceptionHandler#handleValidationExceptions(MethodArgumentNotValidException, WebRequest)
+
+java.lang.IllegalArgumentException: Request must not be null
+	at org.springframework.util.Assert.notNull(Assert.java:172) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.web.util.WebUtils.getSessionAttribute(WebUtils.java:374) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.i18n.SessionLocaleResolver.resolveLocale(SessionLocaleResolver.java:151) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at com.managedrink.exception.GlobalExceptionHandler.handleValidationExceptions(GlobalExceptionHandler.java:64) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-07-10T00:02:42.901+07:00  WARN 9248 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.managedrink.controller.DrinkController.createDrink(com.managedrink.dto.DrinkDTO): [Field error in object 'drinkDTO' on field 'nameDrink': rejected value []; codes [NotEmpty.drinkDTO.nameDrink,NotEmpty.nameDrink,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [drinkDTO.nameDrink,nameDrink]; arguments []; default message [nameDrink]]; default message [name.drink.not.empty]] ]
+2024-07-10T00:06:55.248+07:00  INFO 16300 --- [main] com.managedrink.ManageDrinkApplication   : Starting ManageDrinkApplication using Java 17.0.10 with PID 16300 (C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong\ManageDrink\target\classes started by Admin in C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong)
+2024-07-10T00:06:55.252+07:00  INFO 16300 --- [main] com.managedrink.ManageDrinkApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-10T00:06:56.081+07:00  INFO 16300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-10T00:06:56.137+07:00  INFO 16300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 2 JPA repository interfaces.
+2024-07-10T00:06:56.531+07:00  INFO 16300 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-10T00:06:56.539+07:00  INFO 16300 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-10T00:06:56.539+07:00  INFO 16300 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-10T00:06:56.588+07:00  INFO 16300 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-10T00:06:56.588+07:00  INFO 16300 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1276 ms
+2024-07-10T00:06:56.680+07:00  INFO 16300 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-10T00:06:56.719+07:00  INFO 16300 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-10T00:06:56.739+07:00  INFO 16300 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-10T00:06:56.904+07:00  INFO 16300 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-10T00:06:56.919+07:00  INFO 16300 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-10T00:06:57.131+07:00  INFO 16300 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3355168
+2024-07-10T00:06:57.137+07:00  INFO 16300 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-10T00:06:57.800+07:00  INFO 16300 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-10T00:06:57.873+07:00  INFO 16300 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-10T00:06:58.229+07:00  WARN 16300 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-10T00:06:58.908+07:00  INFO 16300 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-10T00:06:58.921+07:00  INFO 16300 --- [main] com.managedrink.ManageDrinkApplication   : Started ManageDrinkApplication in 4.102 seconds (process running for 4.713)
+2024-07-10T00:07:06.541+07:00  INFO 16300 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-10T00:07:06.541+07:00  INFO 16300 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-10T00:07:06.548+07:00  INFO 16300 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2024-07-10T00:44:11.555+07:00  INFO 15512 --- [main] com.managedrink.ManageDrinkApplication   : Starting ManageDrinkApplication using Java 17.0.10 with PID 15512 (C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong\ManageDrink\target\classes started by Admin in C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong)
+2024-07-10T00:44:11.570+07:00  INFO 15512 --- [main] com.managedrink.ManageDrinkApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-10T00:44:12.273+07:00  INFO 15512 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-10T00:44:12.321+07:00  INFO 15512 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 2 JPA repository interfaces.
+2024-07-10T00:44:12.697+07:00  INFO 15512 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-10T00:44:12.697+07:00  INFO 15512 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-10T00:44:12.697+07:00  INFO 15512 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-10T00:44:12.747+07:00  INFO 15512 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-10T00:44:12.747+07:00  INFO 15512 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1127 ms
+2024-07-10T00:44:12.838+07:00  INFO 15512 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-10T00:44:12.869+07:00  INFO 15512 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-10T00:44:12.885+07:00  INFO 15512 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-10T00:44:13.042+07:00  INFO 15512 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-10T00:44:13.057+07:00  INFO 15512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-10T00:44:13.276+07:00  INFO 15512 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@405d8a80
+2024-07-10T00:44:13.276+07:00  INFO 15512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-10T00:44:13.897+07:00  INFO 15512 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-10T00:44:13.975+07:00  INFO 15512 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-10T00:44:14.288+07:00  WARN 15512 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-10T00:44:14.940+07:00  INFO 15512 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-10T00:44:14.940+07:00  INFO 15512 --- [main] com.managedrink.ManageDrinkApplication   : Started ManageDrinkApplication in 3.787 seconds (process running for 4.421)
+2024-07-10T00:46:32.402+07:00  INFO 15512 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-10T00:46:32.402+07:00  INFO 15512 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-10T00:46:32.402+07:00  INFO 15512 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-07-10T00:46:32.507+07:00  WARN 15512 --- [http-nio-8080-exec-1] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages/validation_messages,messages/message] not found for MessageSource: Can't find bundle for base name messages/validation_messages,messages/message, locale en
+2024-07-10T00:46:32.507+07:00  WARN 15512 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler com.managedrink.exception.GlobalExceptionHandler#handleValidationExceptions(MethodArgumentNotValidException, WebRequest)
+
+org.springframework.context.NoSuchMessageException: No message found under code 'name.drink.not.empty' for locale 'en'.
+	at org.springframework.context.support.AbstractMessageSource.getMessage(AbstractMessageSource.java:162) ~[spring-context-6.1.10.jar:6.1.10]
+	at com.managedrink.exception.GlobalExceptionHandler.lambda$handleValidationExceptions$0(GlobalExceptionHandler.java:73) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at java.base/java.util.Collections$UnmodifiableCollection.forEach(Collections.java:1092) ~[na:na]
+	at com.managedrink.exception.GlobalExceptionHandler.handleValidationExceptions(GlobalExceptionHandler.java:71) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-07-10T00:46:32.518+07:00  WARN 15512 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.managedrink.controller.DrinkController.createDrink(com.managedrink.dto.DrinkDTO): [Field error in object 'drinkDTO' on field 'nameDrink': rejected value []; codes [NotEmpty.drinkDTO.nameDrink,NotEmpty.nameDrink,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [drinkDTO.nameDrink,nameDrink]; arguments []; default message [nameDrink]]; default message [name.drink.not.empty]] ]
+2024-07-10T00:47:17.115+07:00  INFO 9032 --- [main] com.managedrink.ManageDrinkApplication   : Starting ManageDrinkApplication using Java 17.0.10 with PID 9032 (C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong\ManageDrink\target\classes started by Admin in C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong)
+2024-07-10T00:47:17.115+07:00  INFO 9032 --- [main] com.managedrink.ManageDrinkApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-10T00:47:17.849+07:00  INFO 9032 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-10T00:47:17.896+07:00  INFO 9032 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 2 JPA repository interfaces.
+2024-07-10T00:47:18.271+07:00  INFO 9032 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-10T00:47:18.287+07:00  INFO 9032 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-10T00:47:18.287+07:00  INFO 9032 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-10T00:47:18.334+07:00  INFO 9032 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-10T00:47:18.334+07:00  INFO 9032 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1164 ms
+2024-07-10T00:47:18.428+07:00  INFO 9032 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-10T00:47:18.459+07:00  INFO 9032 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-10T00:47:18.491+07:00  INFO 9032 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-10T00:47:18.648+07:00  INFO 9032 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-10T00:47:18.663+07:00  INFO 9032 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-10T00:47:18.882+07:00  INFO 9032 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3355168
+2024-07-10T00:47:18.882+07:00  INFO 9032 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-10T00:47:19.516+07:00  INFO 9032 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-10T00:47:19.579+07:00  INFO 9032 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-10T00:47:19.907+07:00  WARN 9032 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-10T00:47:20.592+07:00  INFO 9032 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-10T00:47:20.592+07:00  INFO 9032 --- [main] com.managedrink.ManageDrinkApplication   : Started ManageDrinkApplication in 3.9 seconds (process running for 4.564)
+2024-07-10T00:47:25.256+07:00  INFO 9032 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-10T00:47:25.256+07:00  INFO 9032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-10T00:47:25.256+07:00  INFO 9032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-07-10T00:49:07.730+07:00  INFO 15544 --- [main] com.managedrink.ManageDrinkApplication   : Starting ManageDrinkApplication using Java 17.0.10 with PID 15544 (C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong\ManageDrink\target\classes started by Admin in C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong)
+2024-07-10T00:49:07.739+07:00  INFO 15544 --- [main] com.managedrink.ManageDrinkApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-10T00:49:08.473+07:00  INFO 15544 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-10T00:49:08.519+07:00  INFO 15544 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 2 JPA repository interfaces.
+2024-07-10T00:49:08.911+07:00  INFO 15544 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-10T00:49:08.911+07:00  INFO 15544 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-10T00:49:08.911+07:00  INFO 15544 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-10T00:49:08.958+07:00  INFO 15544 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-10T00:49:08.958+07:00  INFO 15544 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1168 ms
+2024-07-10T00:49:09.052+07:00  INFO 15544 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-10T00:49:09.083+07:00  INFO 15544 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-10T00:49:09.114+07:00  INFO 15544 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-10T00:49:09.255+07:00  INFO 15544 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-10T00:49:09.271+07:00  INFO 15544 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-10T00:49:09.475+07:00  INFO 15544 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1c6ac73c
+2024-07-10T00:49:09.475+07:00  INFO 15544 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-10T00:49:10.118+07:00  INFO 15544 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-10T00:49:10.184+07:00  INFO 15544 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-10T00:49:10.513+07:00  WARN 15544 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-10T00:49:11.163+07:00  INFO 15544 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-10T00:49:11.176+07:00  INFO 15544 --- [main] com.managedrink.ManageDrinkApplication   : Started ManageDrinkApplication in 3.869 seconds (process running for 4.481)
+2024-07-10T00:49:15.101+07:00  INFO 15544 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-10T00:49:15.101+07:00  INFO 15544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-10T00:49:15.101+07:00  INFO 15544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-07-10T00:49:15.220+07:00  WARN 15544 --- [http-nio-8080-exec-1] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [[Ljava.lang.String;@32b0876c] not found for MessageSource: Can't find bundle for base name [Ljava.lang.String;@32b0876c, locale en
+2024-07-10T00:49:15.220+07:00  WARN 15544 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler com.managedrink.exception.GlobalExceptionHandler#handleValidationExceptions(MethodArgumentNotValidException, WebRequest)
+
+org.springframework.context.NoSuchMessageException: No message found under code 'name.drink.not.empty' for locale 'en'.
+	at org.springframework.context.support.AbstractMessageSource.getMessage(AbstractMessageSource.java:162) ~[spring-context-6.1.10.jar:6.1.10]
+	at com.managedrink.exception.GlobalExceptionHandler.lambda$handleValidationExceptions$0(GlobalExceptionHandler.java:73) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at java.base/java.util.Collections$UnmodifiableCollection.forEach(Collections.java:1092) ~[na:na]
+	at com.managedrink.exception.GlobalExceptionHandler.handleValidationExceptions(GlobalExceptionHandler.java:71) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-07-10T00:49:15.237+07:00  WARN 15544 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> com.managedrink.controller.DrinkController.createDrink(com.managedrink.dto.DrinkDTO): [Field error in object 'drinkDTO' on field 'nameDrink': rejected value []; codes [NotEmpty.drinkDTO.nameDrink,NotEmpty.nameDrink,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [drinkDTO.nameDrink,nameDrink]; arguments []; default message [nameDrink]]; default message [name.drink.not.empty]] ]
+2024-07-10T11:14:30.987+07:00  INFO 1920 --- [main] com.managedrink.ManageDrinkApplication   : Starting ManageDrinkApplication using Java 17.0.10 with PID 1920 (C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong\ManageDrink\target\classes started by Admin in C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong)
+2024-07-10T11:14:30.992+07:00  INFO 1920 --- [main] com.managedrink.ManageDrinkApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-10T11:14:32.442+07:00  INFO 1920 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-10T11:14:32.536+07:00  INFO 1920 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82 ms. Found 2 JPA repository interfaces.
+2024-07-10T11:14:33.482+07:00  INFO 1920 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-10T11:14:33.497+07:00  INFO 1920 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-10T11:14:33.497+07:00  INFO 1920 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-10T11:14:33.568+07:00  INFO 1920 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-10T11:14:33.568+07:00  INFO 1920 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2471 ms
+2024-07-10T11:14:33.740+07:00  INFO 1920 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-10T11:14:33.836+07:00  INFO 1920 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-10T11:14:33.892+07:00  INFO 1920 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-10T11:14:34.283+07:00  INFO 1920 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-10T11:14:34.307+07:00  INFO 1920 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-10T11:14:34.777+07:00  INFO 1920 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@13c90c06
+2024-07-10T11:14:34.780+07:00  INFO 1920 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-10T11:14:36.048+07:00  INFO 1920 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-10T11:14:36.177+07:00  INFO 1920 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-10T11:14:37.008+07:00  WARN 1920 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-10T11:14:38.330+07:00  INFO 1920 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-10T11:14:38.358+07:00  INFO 1920 --- [main] com.managedrink.ManageDrinkApplication   : Started ManageDrinkApplication in 8.581 seconds (process running for 10.365)
+2024-07-10T11:14:54.778+07:00  INFO 1920 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-10T11:14:54.778+07:00  INFO 1920 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-10T11:14:54.778+07:00  INFO 1920 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-07-10T11:14:55.428+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.429+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.438+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.509+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.509+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.509+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.509+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.509+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.509+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.517+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.549+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.549+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.550+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.550+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.566+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.566+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.568+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.589+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.589+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.592+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.592+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.592+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.594+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.598+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.606+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.606+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.607+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.608+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.608+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.615+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.616+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.616+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.618+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.618+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.627+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.627+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.628+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.628+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.628+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.628+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.638+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.638+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.638+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.644+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.644+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.647+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.657+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.657+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.657+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.657+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.659+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.659+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.659+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.668+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.668+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.668+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.668+07:00  WARN 1920 --- [http-nio-8080-exec-9] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale en
+2024-07-10T11:14:55.683+07:00  INFO 1920 --- [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 489 ms
+2024-07-10T11:15:02.582+07:00  WARN 1920 --- [http-nio-8080-exec-10] o.s.c.s.ResourceBundleMessageSource      : ResourceBundle [messages] not found for MessageSource: Can't find bundle for base name messages, locale vi
+2024-07-10T11:15:02.584+07:00 ERROR 1920 --- [http-nio-8080-exec-10] c.m.exception.GlobalExceptionHandler     : Runtime exception: No message found under code 'hello' for locale 'vi'.
+2024-07-10T11:17:14.072+07:00  INFO 6668 --- [main] com.managedrink.ManageDrinkApplication   : Starting ManageDrinkApplication using Java 17.0.10 with PID 6668 (C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong\ManageDrink\target\classes started by Admin in C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong)
+2024-07-10T11:17:14.078+07:00  INFO 6668 --- [main] com.managedrink.ManageDrinkApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-10T11:17:16.130+07:00  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-10T11:17:16.342+07:00  INFO 6668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 187 ms. Found 2 JPA repository interfaces.
+2024-07-10T11:17:17.464+07:00  INFO 6668 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-10T11:17:17.482+07:00  INFO 6668 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-10T11:17:17.483+07:00  INFO 6668 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-10T11:17:17.610+07:00  INFO 6668 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-10T11:17:17.611+07:00  INFO 6668 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3427 ms
+2024-07-10T11:17:18.138+07:00  INFO 6668 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-10T11:17:18.230+07:00  INFO 6668 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-10T11:17:18.280+07:00  INFO 6668 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-10T11:17:18.832+07:00  INFO 6668 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-10T11:17:18.881+07:00  INFO 6668 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-10T11:17:19.480+07:00  INFO 6668 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@386e9fd8
+2024-07-10T11:17:19.484+07:00  INFO 6668 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-10T11:17:21.598+07:00  INFO 6668 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-10T11:17:21.787+07:00  INFO 6668 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-10T11:17:22.750+07:00  WARN 6668 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-10T11:17:25.437+07:00  INFO 6668 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-10T11:17:25.469+07:00  INFO 6668 --- [main] com.managedrink.ManageDrinkApplication   : Started ManageDrinkApplication in 12.345 seconds (process running for 14.061)
+2024-07-10T11:17:27.636+07:00  INFO 6668 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-10T11:17:27.636+07:00  INFO 6668 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-10T11:17:27.636+07:00  INFO 6668 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-07-10T11:33:31.642+07:00  INFO 9808 --- [main] com.managedrink.ManageDrinkApplication   : Starting ManageDrinkApplication using Java 17.0.10 with PID 9808 (C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong\ManageDrink\target\classes started by Admin in C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong)
+2024-07-10T11:33:31.647+07:00  INFO 9808 --- [main] com.managedrink.ManageDrinkApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-10T11:33:32.726+07:00  INFO 9808 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-10T11:33:32.791+07:00  INFO 9808 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 2 JPA repository interfaces.
+2024-07-10T11:33:33.261+07:00  INFO 9808 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-10T11:33:33.268+07:00  INFO 9808 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-10T11:33:33.270+07:00  INFO 9808 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-10T11:33:33.323+07:00  INFO 9808 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-10T11:33:33.323+07:00  INFO 9808 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1609 ms
+2024-07-10T11:33:33.480+07:00  INFO 9808 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-10T11:33:33.541+07:00  INFO 9808 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-10T11:33:33.575+07:00  INFO 9808 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-10T11:33:33.849+07:00  INFO 9808 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-10T11:33:33.876+07:00  INFO 9808 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-10T11:33:34.144+07:00  INFO 9808 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2f07930a
+2024-07-10T11:33:34.146+07:00  INFO 9808 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-10T11:33:34.990+07:00  INFO 9808 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-10T11:33:35.090+07:00  INFO 9808 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-10T11:33:35.529+07:00  WARN 9808 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-10T11:33:36.431+07:00  INFO 9808 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-10T11:33:36.442+07:00  INFO 9808 --- [main] com.managedrink.ManageDrinkApplication   : Started ManageDrinkApplication in 5.35 seconds (process running for 6.322)
+2024-07-10T11:34:06.455+07:00  INFO 9808 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-10T11:34:06.455+07:00  INFO 9808 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-10T11:34:06.458+07:00  INFO 9808 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-07-10T11:58:09.791+07:00  INFO 2764 --- [main] com.managedrink.ManageDrinkApplication   : Starting ManageDrinkApplication using Java 17.0.10 with PID 2764 (C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong\ManageDrink\target\classes started by Admin in C:\Users\Admin\Downloads\Manager_Drink\Quan_li_do_uong)
+2024-07-10T11:58:09.791+07:00  INFO 2764 --- [main] com.managedrink.ManageDrinkApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-10T11:58:10.899+07:00  INFO 2764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-10T11:58:10.994+07:00  INFO 2764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 2 JPA repository interfaces.
+2024-07-10T11:58:11.709+07:00  INFO 2764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-10T11:58:11.723+07:00  INFO 2764 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-10T11:58:11.723+07:00  INFO 2764 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-10T11:58:11.785+07:00  INFO 2764 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-10T11:58:11.787+07:00  INFO 2764 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1923 ms
+2024-07-10T11:58:12.093+07:00  INFO 2764 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-10T11:58:12.141+07:00  INFO 2764 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-10T11:58:12.172+07:00  INFO 2764 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-10T11:58:12.439+07:00  INFO 2764 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-10T11:58:12.456+07:00  INFO 2764 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-10T11:58:12.763+07:00  INFO 2764 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@15f861ee
+2024-07-10T11:58:12.766+07:00  INFO 2764 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-10T11:58:13.714+07:00  INFO 2764 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-10T11:58:13.825+07:00  INFO 2764 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-10T11:58:14.244+07:00  WARN 2764 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-10T11:58:15.130+07:00  INFO 2764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-10T11:58:15.143+07:00  INFO 2764 --- [main] com.managedrink.ManageDrinkApplication   : Started ManageDrinkApplication in 5.917 seconds (process running for 7.032)

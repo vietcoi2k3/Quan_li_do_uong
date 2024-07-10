@@ -11,12 +11,9 @@ import com.managedrink.until.mapper.ToppingMapper;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -24,13 +21,16 @@ import java.util.stream.Collectors;
  */
 @Service
 @Slf4j
-public class ToppingService implements IToppingService {
+public class ToppingServiceImpl implements IToppingService {
 
     @Autowired
     private ToppingRepository toppingRepository;
 
     @Autowired
     private DrinkRepository drinkRepository;
+
+    @Autowired
+    private MessageServiceIplm messageService;
 
     /**
      * Xóa một topping dựa trên ID của nó.
@@ -40,14 +40,13 @@ public class ToppingService implements IToppingService {
      * @throws NotFoundException nếu không tìm thấy topping với ID đã cho.
      */
     @Override
-    public ResponseEntity<?> deleteTopping(Long idTopping) {
-        Optional<ToppingEntity> toppingEntityOptional = toppingRepository.findById(idTopping);
-        if (!toppingEntityOptional.isPresent()) {
-            throw new NotFoundException(MessageConstant.TOPPING_NOT_FOUND);
+    public String deleteTopping(Long idTopping) {
+        if (!toppingRepository.existsById(idTopping)) {
+            throw new NotFoundException(messageService.getMessage(MessageConstant.TOPPING_NOT_FOUND));
         }
 
         toppingRepository.deleteById(idTopping);
-        return ResponseEntity.status(HttpStatus.OK).body(MessageConstant.TOPPING_DELETED_SUCCESSFULLY);
+        return MessageConstant.TOPPING_DELETED_SUCCESSFULLY;
     }
 
     /**
@@ -61,7 +60,7 @@ public class ToppingService implements IToppingService {
     @Transactional
     public List<ToppingDTO> getListToppingByIdDrink(Long id) {
         if (!drinkRepository.existsById(id)) {
-            throw new NotFoundException(MessageConstant.DRINK_NOT_FOUND);
+            throw new NotFoundException(messageService.getMessage(MessageConstant.DRINK_NOT_FOUND));
         }
 
         List<ToppingEntity> result = toppingRepository.getToppingEntitiesByDrinkId(id);
@@ -92,7 +91,7 @@ public class ToppingService implements IToppingService {
     @Override
     public ToppingDTO updateTopping(ToppingDTO toppingDTO) {
         if (!toppingRepository.existsById(toppingDTO.getId())) {
-            throw new NotFoundException(MessageConstant.TOPPING_NOT_FOUND);
+            throw new NotFoundException(messageService.getMessage(MessageConstant.TOPPING_NOT_FOUND));
         }
         toppingRepository.save(ToppingMapper.convertDTOToEntity(toppingDTO));
         return toppingDTO;

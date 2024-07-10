@@ -44,7 +44,6 @@ public class DrinkEntity {
      * Cột được định nghĩa với kiểu VARCHAR(50).
      */
     @NotEmpty(message = ValidateConstant.NAME_DRINK_NOT_EMPTY)
-    @NotNull(message = ValidateConstant.NAME_DRINK_NOT_NULL)
     @Size(max = 50, message = ValidateConstant.NAME_DRINK_MAX_SIZE)
     @Column(columnDefinition = CommonConstant.VARCHAR_50)
     private String nameDrink;

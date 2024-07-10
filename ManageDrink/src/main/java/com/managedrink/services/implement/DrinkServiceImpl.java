@@ -8,23 +8,27 @@ import com.managedrink.exception.NotNullException;
 import com.managedrink.repository.DrinkRepository;
 import com.managedrink.repository.ToppingRepository;
 import com.managedrink.services.IDrinkService;
+import com.managedrink.until.constants.LogMessageConstants;
 import com.managedrink.until.constants.MessageConstant;
 import com.managedrink.until.mapper.DrinkMapper;
 import jakarta.transaction.Transactional;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.ResourceBundle;
 
 @Service
-public class DrinkService implements IDrinkService {
+@Slf4j
+/**
+ * Implementations of Drink Service
+ */
+public class DrinkServiceImpl implements IDrinkService {
 
     @Autowired
     private DrinkRepository drinkRepository;
@@ -32,6 +36,8 @@ public class DrinkService implements IDrinkService {
     @Autowired
     private ToppingRepository toppingRepository;
 
+    @Autowired
+    private MessageServiceIplm messageService;
 
 
     /**
@@ -44,8 +50,8 @@ public class DrinkService implements IDrinkService {
     @Override
     @Transactional
     public DrinkDTO createDrink(DrinkDTO drinkDTO) {
-        if (drinkDTO == null) {
-            throw new NotNullException(MessageConstant.DRINK_NOT_NULL);
+        if (Objects.isNull(drinkDTO)) {
+            throw new NotNullException(messageService.getMessage(MessageConstant.DRINK_NOT_NULL));
         }
 
         DrinkEntity drinkEntity = DrinkMapper.convertDTOToEntity(drinkDTO);
@@ -88,7 +94,7 @@ public class DrinkService implements IDrinkService {
         }
 
         DrinkEntity drinkEntity = drinkRepository.findById(drinkDTO.getId())
-                .orElseThrow(() -> new NotFoundException(MessageConstant.DRINK_NOT_FOUND));
+                .orElseThrow(() -> new NotFoundException(messageService.getMessage(MessageConstant.DRINK_NOT_FOUND)));
 
         drinkEntity.setNameDrink(drinkDTO.getNameDrink());
         drinkEntity.setDescription(drinkDTO.getDescription());
@@ -108,14 +114,13 @@ public class DrinkService implements IDrinkService {
      */
     @Override
     @Transactional
-    public ResponseEntity<?> deleteDrink(Long id) {
-        Optional<DrinkEntity> drinkEntityOptional = drinkRepository.findById(id);
+    public String deleteDrink(Long id) {
 
-        if (!drinkEntityOptional.isPresent()) {
-            throw new NotFoundException(MessageConstant.DRINK_NOT_FOUND);
+        if (!drinkRepository.existsById(id)) {
+            throw new NotFoundException(messageService.getMessage(MessageConstant.DRINK_NOT_FOUND));
         }
 
         drinkRepository.deleteById(id);
-        return ResponseEntity.ok(MessageConstant.DRINK_DELETED_SUCCESSFULLY);
+        return messageService.getMessage(MessageConstant.DRINK_DELETED_SUCCESSFULLY);
     }
 }

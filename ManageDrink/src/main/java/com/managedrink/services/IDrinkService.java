@@ -13,6 +13,6 @@ public interface IDrinkService {
 
     DrinkDTO updateDrink(DrinkDTO drinkDTO);
 
-    ResponseEntity<?> deleteDrink(Long id);
+    String deleteDrink(Long id);
 
 }

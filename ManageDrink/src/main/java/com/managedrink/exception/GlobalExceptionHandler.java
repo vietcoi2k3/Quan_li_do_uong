@@ -1,15 +1,24 @@
 package com.managedrink.exception;
 
 import com.managedrink.until.constants.LogMessageConstants;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.LocaleResolver;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -20,24 +29,44 @@ import java.util.Map;
 @Slf4j
 public class GlobalExceptionHandler {
 
-
     /**
      * Xử lý các ngoại lệ validation được ném bởi các phương thức được chú thích bằng @Valid hoặc @Validated.
      * Trích xuất lỗi trường và trả về chúng dưới dạng ResponseEntity với HttpStatus.BAD_REQUEST.
      *
      * @param ex Đối tượng MethodArgumentNotValidException được ném bởi Spring MVC.
+     * @param request Đối tượng WebRequest để lấy thông tin yêu cầu.
      * @return ResponseEntity chứa một bản đồ các lỗi trường.
      */
+
+    private final MessageSource messageSource;
+    private final LocaleResolver localeResolver;
+
+    @Autowired
+    public GlobalExceptionHandler(MessageSource messageSource, LocaleResolver localeResolver) {
+        this.messageSource = messageSource;
+        this.localeResolver = localeResolver;
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex
+            , WebRequest request) {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpServletRequest httpServletRequest = attributes.getRequest();
+        Locale locale = localeResolver.resolveLocale(httpServletRequest);
+
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
+            String errorMessage = messageSource.getMessage(error.getDefaultMessage(), null, locale);
             errors.put(fieldName, errorMessage);
+
+            // log loi
+            log.error(LogMessageConstants.VALIDATION_EXCEPTION, fieldName, errorMessage);
         });
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest().body(errors);
     }
+
 
     /**
      * Xử lý các ngoại lệ runtime.
@@ -78,6 +107,6 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleNotFoundException(NotFoundException ex) {
         // Ghi log ngoại lệ
         log.error(LogMessageConstants.NOT_FOUND_EXCEPTION, ex.getMessage());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 }

@@ -18,12 +18,11 @@ import lombok.*;
  */
 public class ToppingDTO {
 
+
     private Long id;
 
     // Tên của topping không được để trống
     @NotEmpty(message = ValidateConstant.NAME_TOPPING_NOT_EMPTY)
-    // Tên của topping không được là null
-    @NotNull(message = ValidateConstant.NAME_TOPPING_NOT_NULL)
     private String name;
 
     // Giá của topping phải lớn hơn hoặc bằng 0

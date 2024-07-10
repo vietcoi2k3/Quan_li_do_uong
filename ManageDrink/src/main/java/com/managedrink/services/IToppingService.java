@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IToppingService {
 
-    ResponseEntity<?> deleteTopping(Long idTopping);
+    String deleteTopping(Long idTopping);
 
     List<ToppingDTO> getListToppingByIdDrink(Long id) throws NotFoundException;
 

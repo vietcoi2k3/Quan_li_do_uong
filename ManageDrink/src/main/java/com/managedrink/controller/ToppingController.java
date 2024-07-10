@@ -1,7 +1,7 @@
 package com.managedrink.controller;
 
 import com.managedrink.dto.ToppingDTO;
-import com.managedrink.services.implement.ToppingService;
+import com.managedrink.services.implement.ToppingServiceImpl;
 import com.managedrink.until.constants.ApiResponseMessages;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -11,17 +11,19 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/topping")
 /**
- * Controller quản lý các API liên quan đến các operation của Topping.
+ * Controller quản lý các API  của Topping.
  */
+@Validated
 public class ToppingController {
 
     @Autowired
-    private ToppingService toppingService;
+    private ToppingServiceImpl toppingService;
 
     /**
      * API để thêm mới một topping.
@@ -29,7 +31,7 @@ public class ToppingController {
      * @param toppingDTO Đối tượng DTO của topping để thêm mới.
      * @return ResponseEntity chứa thông tin về topping đã được lưu và HttpStatus.CREATED nếu thành công.
      */
-    @Operation(summary = "Create a new topping", description = "API để thêm mới một topping")
+    @Operation(summary = "Create new topping", description = "API để thêm mới một topping")
     @ApiResponses(value = {
             @ApiResponse(responseCode = ApiResponseMessages.CREATED,
                     description = ApiResponseMessages.CREATED_DESC),
@@ -51,7 +53,8 @@ public class ToppingController {
      * @param toppingDTO Đối tượng DTO của topping để cập nhật thông tin.
      * @return ResponseEntity chứa thông tin về topping đã được cập nhật và HttpStatus.OK nếu thành công.
      */
-    @Operation(summary = "Update an existing topping", description = "API để cập nhật thông tin của một topping")
+    @Operation(summary = "Update an existing topping",
+            description = "API để cập nhật thông tin của một topping")
     @ApiResponses(value = {
             @ApiResponse(responseCode = ApiResponseMessages.OK,
                     description = ApiResponseMessages.OK_DESC),
@@ -75,7 +78,8 @@ public class ToppingController {
      * @param drinkID ID của đồ uống để lấy danh sách topping.
      * @return ResponseEntity chứa danh sách các topping và HttpStatus.OK nếu thành công.
      */
-    @Operation(summary = "Get list of toppings by drink ID", description = "API để lấy danh sách các topping của một đồ uống")
+    @Operation(summary = "Get list of toppings by drink ID",
+            description = "API để lấy danh sách các topping của một đồ uống")
     @ApiResponses(value = {
             @ApiResponse(responseCode = ApiResponseMessages.OK,
                     description = ApiResponseMessages.OK_DESC),
@@ -96,7 +100,8 @@ public class ToppingController {
      *
      * @return ResponseEntity chứa danh sách tất cả các topping và HttpStatus.OK nếu thành công.
      */
-    @Operation(summary = "Get all toppings", description = "API để lấy danh sách tất cả các topping có trong hệ thống")
+    @Operation(summary = "Get all toppings",
+            description = "API để lấy danh sách tất cả các topping có trong hệ thống")
     @ApiResponses(value = {
             @ApiResponse(responseCode = ApiResponseMessages.OK,
                     description = ApiResponseMessages.OK_DESC),
@@ -114,14 +119,16 @@ public class ToppingController {
      * @param id ID của topping cần xóa.
      * @return ResponseEntity chứa thông báo xóa thành công hoặc thất bại và HttpStatus tương ứng.
      */
-    @Operation(summary = "Delete a topping by ID", description = "API để xóa một topping dựa trên ID")
+    @Operation(summary = "Delete topping by ID", description = "API để xóa một topping dựa trên ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = ApiResponseMessages.OK,
                     description = ApiResponseMessages.OK_DESC),
             @ApiResponse(responseCode = ApiResponseMessages.NOT_FOUND,
                     description = ApiResponseMessages.NOT_FOUND_DESC),
             @ApiResponse(responseCode = ApiResponseMessages.INTERNAL_SERVER_ERROR,
-                    description = ApiResponseMessages.INTERNAL_SERVER_ERROR_DESC)
+                    description = ApiResponseMessages.INTERNAL_SERVER_ERROR_DESC),
+            @ApiResponse(responseCode = ApiResponseMessages.BAD_REQUEST,
+                    description = ApiResponseMessages.BAD_REQUEST_DESC)
     })
     @DeleteMapping("/{id}/delete")
     public ResponseEntity<?> deleteTopping(

@@ -1,23 +1,35 @@
 package com.managedrink.until.constants;
 
+/**
+ * Định nghĩa các hằng số thông điệp cho các trường hợp trong ứng dụng.
+ * Các hằng số này được sử dụng để tránh hard-code các thông điệp trong mã nguồn.
+ */
 public class MessageConstant {
-    public static final String DRINK_ALREADY_EXISTS = "A drink with this name already exists.";
 
-    public static final String ERROR_CREATING_DRINK = "An error occurred while creating the drink.";
+    // Thông điệp khi một đồ uống đã tồn tại trong hệ thống
+    public static final String DRINK_ALREADY_EXISTS = "drink.already.exists";
 
-    public static final String ERROR_UPDATING_DRINK = "An error occurred while updating the drink.";
+    // Thông điệp khi có lỗi xảy ra trong quá trình tạo đồ uống
+    public static final String ERROR_CREATING_DRINK = "error.creating.drink";
 
-    public static final String DRINK_NOT_FOUND = "Drink not found";
+    // Thông điệp khi có lỗi xảy ra trong quá trình cập nhật đồ uống
+    public static final String ERROR_UPDATING_DRINK = "error.updating.drink";
 
-    public static final String DRINK_DELETED_SUCCESSFULLY = "Drink deleted successfully";
+    // Thông điệp khi không tìm thấy đồ uống
+    public static final String DRINK_NOT_FOUND = "drink.not.found";
 
-    public static final String ERROR_DELETING_DRINK = "An error occurred while deleting the drink";
+    // Thông điệp khi xóa đồ uống thành công
+    public static final String DRINK_DELETED_SUCCESSFULLY = "drink.deleted.successfully";
 
-    public static final String TOPPING_NOT_FOUND = "Topping not exit";
+    // Thông điệp khi có lỗi xảy ra trong quá trình xóa đồ uống
+    public static final String ERROR_DELETING_DRINK = "error.deleting.drink";
 
-    public static final String DRINK_NOT_NULL = "Dink not null";
+    // Thông điệp khi không tìm thấy topping
+    public static final String TOPPING_NOT_FOUND = "topping.not.found";
 
-    public static final String TOPPING_DELETED_SUCCESSFULLY = "Topping deleted successfully";
+    // Thông điệp khi đồ uống không được null
+    public static final String DRINK_NOT_NULL = "drink.not.null";
 
-
+    // Thông điệp khi xóa topping thành công
+    public static final String TOPPING_DELETED_SUCCESSFULLY = "topping.deleted.successfully";
 }

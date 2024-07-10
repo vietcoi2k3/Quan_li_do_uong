@@ -39,7 +39,6 @@ public class ToppingEntity {
      * Cột được định nghĩa với kiểu VARCHAR(50).
      */
     @NotEmpty(message = ValidateConstant.NAME_TOPPING_NOT_EMPTY)
-    @NotNull(message = ValidateConstant.NAME_TOPPING_NOT_NULL)
     @Column(columnDefinition = CommonConstant.VARCHAR_50)
     private String name;
 

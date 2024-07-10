@@ -1,6 +1,9 @@
 package com.managedrink.dto;
 
+import com.managedrink.until.constants.CommonConstant;
+import com.managedrink.until.constants.ValidateConstant;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,20 +25,19 @@ import static com.managedrink.until.PriceUtils.PriceUtils.roundPrice;
  */
 public class DrinkDTO {
 
-    @Schema(description = "ID của đồ uống", example = "1")
     private Long id;
 
-    @Schema(description = "Tên đồ uống", example = "Cà phê sữa đá", required = true)
-    @NotEmpty(message = "Tên đồ uống không được để trống")
+    @NotEmpty(message = ValidateConstant.NAME_DRINK_NOT_EMPTY)
+    @Size(max = 50, message = ValidateConstant.NAME_DRINK_MAX_SIZE)
     private String nameDrink;
 
-    @Schema(description = "Mô tả đồ uống", example = "Đồ uống phổ biến vào buổi sáng", maxLength = 1000)
+
+    @Size(max = 1000, message = ValidateConstant.DESCRIPTION_DRINK_MAX_SIZE)
     private String description;
 
-    @Schema(description = "Giá của đồ uống", example = "50000", minimum = "0")
+    @Min(value = 0, message = ValidateConstant.PRICE_DRINK_MUST_GREATER_ZERO)
     private int price;
 
-    @Schema(description = "Danh sách các ID của topping liên quan đến đồ uống", example = "[1, 2, 3]")
     private List<Long> listIds;
 
     /**

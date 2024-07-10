@@ -20,5 +20,6 @@ public class CommonConstant {
 
     public static final String DEFAULT_SIZE = "10";
 
+    public static final String DEFAULT_FOLDER = "logs";
 
 }

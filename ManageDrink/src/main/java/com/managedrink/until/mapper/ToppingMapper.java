@@ -3,10 +3,18 @@ package com.managedrink.until.mapper;
 import com.managedrink.dto.ToppingDTO;
 import com.managedrink.entity.ToppingEntity;
 
+/**
+ * Lớp ToppingMapper chứa các phương thức chuyển đổi giữa DTO và Entity của đối tượng Topping.
+ */
 public class ToppingMapper {
 
+    /**
+     * Chuyển đổi từ ToppingDTO sang ToppingEntity.
+     * @param toppingDTO DTO của topping.
+     * @return Entity tương ứng của topping.
+     */
     public static ToppingEntity convertDTOToEntity(ToppingDTO toppingDTO){
-        if (toppingDTO==null){
+        if (toppingDTO == null){
             return null;
         }
         ToppingEntity toppingEntity = ToppingEntity.builder()
@@ -17,6 +25,11 @@ public class ToppingMapper {
         return toppingEntity;
     }
 
+    /**
+     * Chuyển đổi từ ToppingEntity sang ToppingDTO.
+     * @param toppingEntity Entity của topping.
+     * @return DTO tương ứng của topping.
+     */
     public static ToppingDTO convertEntityTODTO(ToppingEntity toppingEntity){
         if (toppingEntity == null){
             return null;
