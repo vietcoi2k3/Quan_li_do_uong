@@ -13,7 +13,7 @@ import java.util.Locale;
  * Service này cung cấp phương thức để lấy thông điệp dựa trên key từ MessageSource.
  */
 @Service
-public class MessageServiceIplm implements IMessageService {
+public class MessageServiceImpl implements IMessageService {
 
     @Autowired
     private MessageSource messageSource;

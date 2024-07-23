@@ -35,7 +35,7 @@ public class DrinkServiceImpl implements IDrinkService {
     private ToppingRepository toppingRepository;
 
     @Autowired
-    private MessageServiceIplm messageService;
+    private MessageServiceImpl messageService;
 
 
     /**

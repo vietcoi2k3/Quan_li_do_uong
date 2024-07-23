@@ -32,7 +32,7 @@ public class ToppingServiceImpl implements IToppingService {
     private DrinkRepository drinkRepository;
 
     @Autowired
-    private MessageServiceIplm messageService;
+    private MessageServiceImpl messageService;
 
     /**
      * Xóa một topping dựa trên ID của nó.
