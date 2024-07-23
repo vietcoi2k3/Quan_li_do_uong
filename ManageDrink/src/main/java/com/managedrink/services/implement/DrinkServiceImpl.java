@@ -8,11 +8,9 @@ import com.managedrink.exception.NotNullException;
 import com.managedrink.repository.DrinkRepository;
 import com.managedrink.repository.ToppingRepository;
 import com.managedrink.services.IDrinkService;
-import com.managedrink.until.constants.LogMessageConstants;
 import com.managedrink.until.constants.MessageConstant;
 import com.managedrink.until.mapper.DrinkMapper;
 import jakarta.transaction.Transactional;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -53,6 +51,9 @@ public class DrinkServiceImpl implements IDrinkService {
         if (Objects.isNull(drinkDTO)) {
             throw new NotNullException(messageService.getMessage(MessageConstant.DRINK_NOT_NULL));
         }
+         if(Objects.isNull(drinkDTO.getListIds())){
+             throw new NotNullException(messageService.getMessage(MessageConstant.LIST_TOPPING_NOT_NULL));
+         }
 
         DrinkEntity drinkEntity = DrinkMapper.convertDTOToEntity(drinkDTO);
         drinkEntity.setCreateDate(LocalDate.now()); // Thiết lập ngày tạo là ngày hiện tại
@@ -90,7 +91,11 @@ public class DrinkServiceImpl implements IDrinkService {
     @Transactional
     public DrinkDTO updateDrink(DrinkDTO drinkDTO) {
         if (Objects.isNull(drinkDTO)) {
-            throw new NotNullException(MessageConstant.DRINK_NOT_NULL);
+            throw new NotNullException(MessageConstant.DRINK_NOT_NULL) ;
+        }
+
+        if(Objects.isNull(drinkDTO.getId())){
+             throw new NotNullException(messageService.getMessage(MessageConstant.DRINK_ID_NOT_NULL));
         }
 
         DrinkEntity drinkEntity = drinkRepository.findById(drinkDTO.getId())
@@ -115,7 +120,9 @@ public class DrinkServiceImpl implements IDrinkService {
     @Override
     @Transactional
     public String deleteDrink(Long id) {
-
+        if(Objects.isNull(id)){
+             throw new NotNullException(messageService.getMessage(MessageConstant.DRINK_ID_NOT_NULL));
+        }
         if (!drinkRepository.existsById(id)) {
             throw new NotFoundException(messageService.getMessage(MessageConstant.DRINK_NOT_FOUND));
         }

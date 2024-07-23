@@ -115,7 +115,7 @@ public class DrinkController {
      * @param id ID của đồ uống cần xóa.
      * @return ResponseEntity chứa thông tin về việc xóa đồ uống và HttpStatus tương ứng.
      */
-    @Operation(summary = "Delete message_notify_en.properties drink by ID", description = "API xóa một đồ uống dựa trên ID")
+    @Operation(summary = "Delete drink by ID", description = "API xóa một đồ uống dựa trên ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = ApiResponseMessages.OK,
                     description = ApiResponseMessages.OK_DESC),

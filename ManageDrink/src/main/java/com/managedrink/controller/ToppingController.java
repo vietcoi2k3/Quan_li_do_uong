@@ -3,6 +3,7 @@ package com.managedrink.controller;
 import com.managedrink.dto.ToppingDTO;
 import com.managedrink.services.implement.ToppingServiceImpl;
 import com.managedrink.until.constants.ApiResponseMessages;
+import com.managedrink.until.constants.CommonConstant;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -133,7 +134,7 @@ public class ToppingController {
     @DeleteMapping("/{id}/delete")
     public ResponseEntity<?> deleteTopping(
             @Parameter(description = "ID của topping cần xóa", required = true)
-            @PathVariable("id") Long id) {
+            @PathVariable(CommonConstant.ID) Long id) {
         return new ResponseEntity<>(toppingService.deleteTopping(id), HttpStatus.OK);
     }
 }

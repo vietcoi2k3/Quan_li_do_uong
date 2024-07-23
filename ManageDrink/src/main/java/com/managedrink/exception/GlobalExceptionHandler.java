@@ -82,6 +82,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
     }
 
+
     /**
      * Xử lý các ngoại lệ NotNullException.
      * Ghi log ngoại lệ và trả về một ResponseEntity với HttpStatus.BAD_REQUEST.
@@ -109,4 +110,6 @@ public class GlobalExceptionHandler {
         log.error(LogMessageConstants.NOT_FOUND_EXCEPTION, ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
+
+
 }

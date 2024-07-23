@@ -3,6 +3,7 @@ package com.managedrink.services.implement;
 import com.managedrink.dto.ToppingDTO;
 import com.managedrink.entity.ToppingEntity;
 import com.managedrink.exception.NotFoundException;
+import com.managedrink.exception.NotNullException;
 import com.managedrink.repository.DrinkRepository;
 import com.managedrink.repository.ToppingRepository;
 import com.managedrink.services.IToppingService;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -41,6 +43,10 @@ public class ToppingServiceImpl implements IToppingService {
      */
     @Override
     public String deleteTopping(Long idTopping) {
+
+        if(Objects.isNull(idTopping)){
+             throw new NotNullException(messageService.getMessage(MessageConstant.TOPPING_ID_NOT_NULL));
+        }
         if (!toppingRepository.existsById(idTopping)) {
             throw new NotFoundException(messageService.getMessage(MessageConstant.TOPPING_NOT_FOUND));
         }
@@ -59,6 +65,10 @@ public class ToppingServiceImpl implements IToppingService {
     @Override
     @Transactional
     public List<ToppingDTO> getListToppingByIdDrink(Long id) {
+
+        if(Objects.isNull(id)){
+            throw new NotNullException(messageService.getMessage(MessageConstant.DRINK_ID_NOT_NULL));
+        }
         if (!drinkRepository.existsById(id)) {
             throw new NotFoundException(messageService.getMessage(MessageConstant.DRINK_NOT_FOUND));
         }
@@ -90,6 +100,11 @@ public class ToppingServiceImpl implements IToppingService {
      */
     @Override
     public ToppingDTO updateTopping(ToppingDTO toppingDTO) {
+
+        if(Objects.isNull(toppingDTO.getId())){
+            throw new NotNullException(messageService.getMessage(MessageConstant.TOPPING_ID_NOT_NULL));
+        }
+
         if (!toppingRepository.existsById(toppingDTO.getId())) {
             throw new NotFoundException(messageService.getMessage(MessageConstant.TOPPING_NOT_FOUND));
         }

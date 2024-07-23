@@ -32,4 +32,14 @@ public class MessageConstant {
 
     // Thông điệp khi xóa topping thành công
     public static final String TOPPING_DELETED_SUCCESSFULLY = "topping.deleted.successfully";
+
+    //Thông điệp đổi ngôn ngữ thành công
+    public static final String LANGUAGE_UPDATED_SUCCESSFULLY = "hello";
+
+    public static final String LIST_TOPPING_NOT_NULL = "not.null.list.topping";
+
+    public static final String DRINK_ID_NOT_NULL = "not.null.drink";
+
+    public static final String TOPPING_ID_NOT_NULL = "not.null.topping";
+
 }

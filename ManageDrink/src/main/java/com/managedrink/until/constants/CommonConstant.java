@@ -2,7 +2,7 @@ package com.managedrink.until.constants;
 
 public class CommonConstant {
 
-    public static final String EMPTY_STRING = "";
+    public static final String ID = "id";
 
     public static final int ZERO = 0;
 
@@ -21,5 +21,6 @@ public class CommonConstant {
     public static final String DEFAULT_SIZE = "10";
 
     public static final String DEFAULT_FOLDER = "logs";
+
 
 }

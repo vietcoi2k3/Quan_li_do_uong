@@ -1,5 +1,8 @@
 package com.managedrink.controller;
 
+import com.managedrink.until.constants.CommonConstant;
+import com.managedrink.until.constants.MessageConstant;
+import com.managedrink.until.constants.MessageSourceConstant;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.LocaleResolver;
 
 import java.util.Locale;
+import java.util.Objects;
+
 /**
  * controller quản lí việc thay đổi ngôn ngu
  */
@@ -31,13 +36,13 @@ public class ChangeLanguageController {
      */
     @PostMapping("/changeLanguage")
     public String changeLanguage(HttpServletRequest request
-            , @RequestParam(name = "lang", required = false) String lang) {
+            , @RequestParam(name = MessageSourceConstant.PARAM_NAME_LANG, required = false) String lang) {
 
-        if (lang != null) {
+        if (Objects.isNull(lang)) {
             Locale locale = Locale.forLanguageTag(lang);
             localeResolver.setLocale(request, null, locale);
         }
         Locale currentLocale = localeResolver.resolveLocale(request);
-        return messageSource.getMessage("hello", null, currentLocale);
+        return messageSource.getMessage(MessageConstant.LANGUAGE_UPDATED_SUCCESSFULLY, null, currentLocale);
     }
 }
