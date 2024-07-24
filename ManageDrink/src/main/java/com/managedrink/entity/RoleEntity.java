@@ -1,8 +1,11 @@
 package com.managedrink.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -25,16 +28,10 @@ public class RoleEntity {
     private Long id;
 
     @Column(nullable = false, unique = true)
+    @NotEmpty(message = "name is not empty")
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "role_permissions",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "permission_id")
-    )
-    private Set<PermissionEntity> permissions;
 
     @ManyToMany(mappedBy = "roles")
-    private Set<UserEntity> users;
+    private Set<UserEntity> users = new HashSet<UserEntity>();
 }

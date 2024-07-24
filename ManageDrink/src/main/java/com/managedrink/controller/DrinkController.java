@@ -15,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +47,7 @@ public class DrinkController {
                     description = ApiResponseMessages.INTERNAL_SERVER_ERROR_DESC)
     })
     @PostMapping("/create")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> createDrink(
             @Parameter(description = "DTO của đồ uống để tạo mới", required = true)
             @RequestBody @Valid DrinkDTO drinkDTO) {
@@ -71,6 +73,7 @@ public class DrinkController {
                     description = ApiResponseMessages.INTERNAL_SERVER_ERROR_DESC)
     })
     @PutMapping("/update")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> updateDrink(
             @Parameter(description = "DTO của đồ uống để cập nhật thông tin", required = true)
             @RequestBody @Valid DrinkDTO drinkDTO) {
@@ -95,6 +98,7 @@ public class DrinkController {
                     description = ApiResponseMessages.INTERNAL_SERVER_ERROR_DESC)
     })
     @GetMapping("/all")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> getAllDrinks(
             @Parameter(description = "Trang hiện tại"
                     , example = CommonConstant.DEFAULT_PAGE, required = false)
@@ -127,6 +131,7 @@ public class DrinkController {
                     description = ApiResponseMessages.BAD_REQUEST_DESC),
     })
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deleteDrink(
             @Parameter(description = "ID của đồ uống cần xóa", required = true)
             @PathVariable Long id) {

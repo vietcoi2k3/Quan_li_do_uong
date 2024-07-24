@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginRequest {
+public class SignUpRequest {
+
     @NotEmpty(message = "username must not be empty")
     private String username;
 

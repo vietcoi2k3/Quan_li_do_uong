@@ -22,5 +22,11 @@ public class CommonConstant {
 
     public static final String DEFAULT_FOLDER = "logs";
 
+    public static final  String HEADER_AUTHORIZATION = "Authorization";
+
+    public static final  String BEARER = "Bearer ";
+
+    public static final  int SEVEN = 7;
+
 
 }

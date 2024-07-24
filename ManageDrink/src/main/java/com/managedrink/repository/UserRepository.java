@@ -1,9 +1,39 @@
-package com.managedrink.repository;/**
- * Class: UserRepository
- * Author: ACER
- * Date: 7/23/2024
- * Description: [Your description here]
- */
+package com.managedrink.repository;
 
-public class UserRepository {
+import com.managedrink.entity.UserEntity;
+import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+/**
+ * Repository quản lý các thao tác với thực thể {@link UserEntity}.
+ * Lớp này mở rộng {@link JpaRepository} và cung cấp các phương thức
+ * để truy xuất và kiểm tra sự tồn tại của người dùng trong cơ sở dữ liệu.
+ */
+@Repository
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+
+    /**
+     * Tìm người dùng theo tên người dùng với thông tin về vai trò và quyền hạn.
+     * Sử dụng {@link EntityGraph} để nạp cùng lúc thông tin vai trò và quyền hạn
+     * của người dùng để tránh các truy vấn N+1.
+     *
+     * @param username tên người dùng của người dùng cần tìm
+     * @return một {@link Optional} chứa {@link UserEntity} nếu tìm thấy người dùng,
+     * ngược lại là {@link Optional#empty()}
+     */
+    @EntityGraph(attributePaths = {"roles", "permissions"})
+    Optional<UserEntity> findByUsername(String username);
+
+    /**
+     * Kiểm tra sự tồn tại của người dùng theo tên người dùng.
+     *
+     * @param username tên người dùng cần kiểm tra
+     * @return true nếu người dùng tồn tại, false nếu không
+     */
+    boolean existsByUsername(String username);
 }

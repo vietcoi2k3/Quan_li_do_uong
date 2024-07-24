@@ -67,6 +67,7 @@ public class ToppingController {
                     description = ApiResponseMessages.INTERNAL_SERVER_ERROR_DESC)
     })
     @PutMapping("/update")
+
     public ResponseEntity<?> updateTopping(
             @Parameter(description = "DTO của topping để cập nhật thông tin", required = true)
             @RequestBody @Valid ToppingDTO toppingDTO) {

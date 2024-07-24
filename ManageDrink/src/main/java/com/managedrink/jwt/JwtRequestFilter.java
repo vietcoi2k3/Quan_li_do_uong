@@ -1,5 +1,7 @@
 package com.managedrink.jwt;
 
+import com.managedrink.services.implement.CustomUserDetailsService;
+import com.managedrink.until.constants.CommonConstant;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,10 +22,10 @@ import java.io.IOException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private JwtUtil jwtUtil;
 
     @Autowired
-    private JwtUtil jwtUtil;
+    private CustomUserDetailsService customUserDetailsService;
 
     /**
      * Same contract as for {@code doFilter}, but guaranteed to be
@@ -40,19 +42,19 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
 
-        final String authorizationHeader = request.getHeader("Authorization");
+        final String authorizationHeader = request.getHeader(CommonConstant.HEADER_AUTHORIZATION);
 
         String username = null;
         String jwt = null;
 
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            jwt = authorizationHeader.substring(7);
+        if (authorizationHeader != null && authorizationHeader.startsWith(CommonConstant.BEARER)) {
+            jwt = authorizationHeader.substring(CommonConstant.SEVEN);
             username = jwtUtil.extractUsername(jwt);
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+            UserDetails userDetails = this.customUserDetailsService.loadUserByUsername(username);
 
             if (jwtUtil.validateToken(jwt, userDetails)) {
 
